@@ -1,0 +1,29 @@
+version: '3'
+services:
+  app: &app
+    restart: always
+    build:
+      context: .
+      target: prod
+    env_file:
+      - .env
+    ports:
+      - $SERVER_PORT:3000
+#    depends_on:
+#      - mongo
+  app-dev:
+    <<: *app
+    build:
+      context: .
+      target: dev
+    volumes:
+      - ./:/usr/src/app
+#  mongo:
+#    image: "mongo:4.4"
+#    ports:
+#      - 27017:27017
+#    volumes:
+#      - ./data/:/data/json:ro
+#      - mongodb:/data/db
+#volumes:
+#  mongodb:
