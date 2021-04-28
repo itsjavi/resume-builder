@@ -5,21 +5,23 @@ services:
     build:
       context: ./client
       target: prod
-    env_file:
-      - .env
+    environment:
+      - "SERVER_URL=http://localhost:3007"
+      - "NEXT_PUBLIC_SERVER_URL=http://localhost:3007"
     ports:
-      - $CLIENT_PORT:3000
-    depends_on:
-      - server
+      - "3000:3000"
   server:
     restart: always
     build:
       context: ./server
       target: prod
-    env_file:
-      - .env
+    environment:
+      - "CLIENT_URL=http://client:3000"
+      - "MONGODB_DSN=mongodb://mongo:27017"
     ports:
-      - $SERVER_PORT:3007
+      - "3007:3007"
+    links:
+      - client
     depends_on:
       - mongo
   mongo:

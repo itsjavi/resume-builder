@@ -1,5 +1,6 @@
-FROM node:15 as base
-RUN npm install -g npm@7.10.0
+FROM buildkite/puppeteer:latest as base
+RUN npm install -g npm@7.11.1
+
 WORKDIR /usr/src/app
 ENV PATH="/usr/src/app/node_modules/.bin:$PATH"
 COPY package*.json ./

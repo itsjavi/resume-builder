@@ -12,9 +12,28 @@ dev:
 down:
 	docker-compose down
 
-build:
-	cd client && \
-		rm -rf ./build ./.next ./out && \
-		docker-compose run --rm app npm run build
+recreate:
+	docker-compose down
+	docker-compose build
+	docker-compose up -d
 
-.PHONY: build dist
+recreate-client:
+	docker-compose stop client
+	docker-compose build client
+	docker-compose up -d client
+
+recreate-server:
+	docker-compose stop server
+	docker-compose build server
+	docker-compose up -d server
+
+clean:
+	rm -rf ./client/build ./client/.next ./client/out
+
+clean-data:
+	rm -rf ./data/*
+
+build:down clean
+	docker-compose run --rm client npm run build
+
+.PHONY: build dist data
