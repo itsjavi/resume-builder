@@ -1,13 +1,9 @@
 # WTF Resume (Resume Builder)
 
 Modern real-time design and 100% free resume builder.
-### [https://wtfresume.com](https://wtfresume.com "wtfresume")
 
-
-### Simple demo: 
-
-![demo](https://user-images.githubusercontent.com/33284430/86123944-eab5b500-bb0c-11ea-9e6f-f3d156f2eb41.gif)
-
+> This is a fork of [wtfresume.com](https://github.com/sramezani/resume-builder), containing both server and client
+? in a containerized configuration, so it can be easily started locally without zero configuration.
 
 ### Features:
 - Real time design (drag and drop)
@@ -17,18 +13,18 @@ Modern real-time design and 100% free resume builder.
 
 
 ### Run Development Mode
-This resume builder created by `React` and `Next js`
+This resume builder created with `React`, `Next js`, NodeJS and MongoDB.
+
+To run the project you will need Docker and run the following (the first time you clone this project):
     
 ```
-yarn dev
-```
-or
-```
-npm run dev
+make install
+make dev
 ```
 
 ### Structure
 
+    client
     ├── pages                   # site pages (home,resume-builder,...)
     ├── public                  # images and other files
     ├── src                    
@@ -40,12 +36,13 @@ npm run dev
     │   ├── theme               # general stylys, ...
     │   └── types               # type for typescript
     └── ...
+    server
+    ├── routes                  # API routes
+    │   ├── download.js         # renders a client resume preview using puppeteer + headless chrome
+    ├── app.js    
+    ├── server.js    
+    └── ...
 
 
-
-#### [Go to WTFresume website](https://wtfresume.com "wtfresume")
-
-
-### Contributing
-Yes of course! Welcome :)
+[Go to WTFresume website](https://wtfresume.com "wtfresume")
 
