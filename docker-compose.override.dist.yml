@@ -1,0 +1,14 @@
+version: '3'
+services:
+  client:
+    build:
+      context: .
+      target: dev
+    volumes:
+      - ./client/:/usr/src/app
+  server:
+    build:
+      context: ./server
+      target: dev
+    volumes:
+      - ./server/:/usr/src/app
