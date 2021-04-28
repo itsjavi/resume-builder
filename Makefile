@@ -7,7 +7,9 @@ install:
 up:dev
 dev:
 	docker-compose up -d
-	open http://localhost:4000
+	echo "Starting services..."
+	sleep 10 # give it some time
+	open http://localhost:3000
 
 down:
 	docker-compose down
